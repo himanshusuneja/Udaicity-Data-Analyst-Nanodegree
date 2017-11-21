@@ -5,7 +5,7 @@
 ### Investigate a Dataset
 
 Posed a question about a dataset, then used NumPy and Pandas to answer that question based on the data and created a report to share the results.
-SKills used - Python, Numpy, Pandas, Matplotib
+Skills used - Python, Numpy, Pandas, Matplotib
 
 ### Test a Perceptual Phenomenon
 
