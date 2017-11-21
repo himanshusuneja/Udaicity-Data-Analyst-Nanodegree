@@ -1,6 +1,6 @@
 # Udaicity-Data-Analyst-Nanodegree
 
-## Project
+## Projects
 
 ### Investigate a Dataset
 
