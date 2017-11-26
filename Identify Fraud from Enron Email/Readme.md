@@ -1,6 +1,4 @@
 
-
-```python
 # Identifying Fraud From Enron Emails and Financial Data
 
 **Himanshu Suneja**
