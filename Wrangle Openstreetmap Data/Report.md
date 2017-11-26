@@ -1,7 +1,4 @@
 
-
-```python
-
 # Project 3: OpenStreetMap Data Wrangling with SQL
 
 **Name:** Himanshu Suneja
