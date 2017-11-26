@@ -4,12 +4,12 @@
 **Himanshu Suneja**
 
 
-##Project Overview
+## Project Overview
 This project involves a real messy data so you have good knowledge of **Data Wrangling** and **Data Visualization** to clean and visualize the data, find correlation between various features and identify extreme outliers and finally using **Machine Learning** algorithm to predict **Person of Interest** 'POI'.
 
 In 2000, Enron was one of the largest companies in the United States. By 2002, it had collapsed into bankruptcy due to widespread corporate fraud. In the resulting Federal investigation, a significant amount of typically confidential information entered into the public record, including tens of thousands of emails and detailed financial data for top executives. In this project, you will play detective, and put your new skills to use by building a person of interest identifier based on financial and email data made public as a result of the Enron scandal. To assist you in your detective work, we've combined this data with a hand-generated list of persons of interest in the fraud case, which means individuals who were indicted, reached a settlement or plea deal with the government, or testified in exchange for prosecution immunity.
 
-##1. Dataset and Outliers
+## 1. Dataset and Outliers
 The dataset contains a total of **146 data points** with **21 features**, **18 POIs** and **128 Non POIs**.
 
 After Exploratory Data Analysis, I found three 3 records need removal:
@@ -27,7 +27,7 @@ Data after removal:
 
 ![](C:/Users/Guhy/Desktop/Udacity Projects/Data Analyst Nanodeegre Program/Intro to machine learning/ud120-projects-master/final_project/after_removal.jpeg) 
 
-##2. Features Selection and Scaling
+## 2. Features Selection and Scaling
 Besides **21 features**, I have created **2 features** additionally by using existing features which I think should help to find more accurate results. 
 
 * ```fraction_poi_communication```: fraction of emails related to POIs. This new feature helps to determine what proportion of messages are communicated between POIs compared to overall messages.
@@ -51,9 +51,9 @@ Using ```SelectKBest```, below are the top 10 features of the dataset:
 
 As we see, our new feature **Total Wealth** is appeared in the top 10 best features, from which we conclude that it is used in every algorithm to determine its performance.
 
-**Features Scaling :** It is used to standardize the range of features in the data. Standardization of dataset is important for many machine learning algorithms otherwise, they might behave badly if individual features do not likely to the standard normally distributed data. In Scikit-learn, I used ```StandardScaler()``` function to standardize the features in the dataset.
+** Features Scaling :** It is used to standardize the range of features in the data. Standardization of dataset is important for many machine learning algorithms otherwise, they might behave badly if individual features do not likely to the standard normally distributed data. In Scikit-learn, I used ```StandardScaler()``` function to standardize the features in the dataset.
 
-##3. Parameters Tuning
+## 3. Parameters Tuning
 Tuning the parameters of an algorithm involves changing the algorithm input parameters to a set of range and measuring the performances of each combinations in order to determine the optimal input parameters. Parameters tuning greatly helps to improve the performance of any algorithm.
 
 For each algorithms, a number of operation applied at once using ```Pipeline``` function, where parameters tuning is done using ```GridSearchCV``` and ```StratifiedShuffleSplit```.
@@ -71,24 +71,24 @@ Following parameters are used to tune an algorithm:
 * Random Forest (```RandomForestClassifier```) : ```n_estimators```, ```max_depth```, ```random_state```
 * Ada Boost (```AdaBoostClassifier```) : ```n_estimators```, ```algorithm```, ```learning_rate```
 
-##4. Validation
+## 4. Validation
 Validation is performed to ensure that a machine learning algorithm generalizes well, and to prevent overfitting. Overfitting occurs when an algorithm perform very well on the training data, but failed to perform on the testing (or, unseen) data. Therefore, it is important to split the dataset into training and testing set.
 In Scikit-Learn, training and testing data are created using ```StratifiedShuffleSplit```, which shuffled the data and split into K different set, called folds. In this dataset, I split the data into **100 folds**.
 
 
 
-##5. Algorithm Selection
+## 5. Algorithm Selection
 
 I performed 6 different algorithms using ```scikit-learn``` and tune the parameters using ```GridSearchCV```.
 Below are the optimal parameters value achieved after performing the parameters tuning for each of the algorithms.
 
-###Gaussian Naive Bayes
+### Gaussian Naive Bayes
 
 ```python
 clf = GaussianNB()
 ```
 
-###Logistic Regression
+### Logistic Regression
 
 ```python
 number_of_best_features = 9
@@ -99,7 +99,7 @@ clf = Pipeline(steps=[
         ('classifier', LogisticRegression(tol=0.01, C=1e-08, penalty='l2', random_state=42))])
 ```
 
-###Support Vector Machine
+### Support Vector Machine
 
 ```python
 number_of_best_features = 8
@@ -110,7 +110,7 @@ clf = Pipeline(steps=[
         ('classifier', SVC(C=1000, gamma=.001, kernel='rbf'))])
 ```
 
-###Decision Tree
+### Decision Tree
 
 ```python
 number_of_best_features = 9
@@ -125,7 +125,7 @@ clf = Pipeline(steps=[
                                               max_depth=None))                                          
 ```
  
-###Random Forest
+### Random Forest
 
 ```python
 number_of_best_features = 9
@@ -137,7 +137,7 @@ clf = Pipeline(steps=[
                                               random_state=42))
 ```
 
-###Ada Boost
+### Ada Boost
 
 ```python
 number_of_best_features = 9
@@ -153,7 +153,7 @@ The uses of PCA worsen the performance of **Random Forest** and **Ada Boost**, s
 Out of all the algorithms, **Logistic Regression** gives overall best performance using evaluation matrices which is discussed below.
 
 
-##6. Evaluation Metrics
+## 6. Evaluation Metrics
 
 I have used three evaluation matrices **Precision**, **Recall** and **F1-score**. Theses matrices are based on comparing the predicted values to actual ones.
 
