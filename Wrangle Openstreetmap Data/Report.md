@@ -259,31 +259,3 @@ This gamification, though, needs to apply OpenStreetMap best practices so that t
 ```
 
 
-```
-
-
-    ---------------------------------------------------------------------------
-
-    KeyboardInterrupt                         Traceback (most recent call last)
-
-    <ipython-input-7-d403319321b6> in <module>()
-         55     return street_types
-         56 
-    ---> 57 pprint.pprint(dict(audit(OSMFILE_sample))) # print the existing names
-         58 
-         59 def string_case(s): # change string into titleCase except for UpperCase
-    
-
-    <ipython-input-7-d403319321b6> in audit(osmfile)
-         46     osm_file = open(osmfile, "r")
-         47     street_types = defaultdict(set)
-    ---> 48     for event, elem in ET.iterparse(osm_file, events=("start",)):
-         49 
-         50         if elem.tag == "node" or elem.tag == "way":
-    
-
-    <string> in next(self)
-    
-
-    KeyboardInterrupt: 
-
